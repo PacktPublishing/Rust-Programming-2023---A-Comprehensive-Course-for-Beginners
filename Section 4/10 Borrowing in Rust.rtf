@@ -1,0 +1,70 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2636
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \
+/*\
+\
+Borrowing In Rust\
+\
+\
+It can be quite a hastle transferring ownership of a variable to another function \
+and then returning  ownership. Through temporarily transferring ownership of a value, \
+Rust supports borrowing ownership in which the ownership is then returned to the original owner.\
+\
+Functions can transfer their control of a value to another function temporarily and that is \
+what we call borrowing in Rust. You can pass a reference to the variable with (& var_name) \
+as opposed to passing the variable itself. The ownership of the variable/ value is transferred \
+to the original owner of the variable.\
+\
+\
+*/\
+\
+\
+fn main()\{\
+   let vector = vec![1,2,3];\
+   //display(vector);\
+   display(&vector);\
+   println!("\{\}",vector[1]); // this will not work\
+   \
+   \
+   // Exercise Solution \
+   \
+    let mut car:String = String::from("Ferrari");\
+   display2(&mut car); \
+   //pass a mutable reference of name\
+   println!("The car has been updated to: \{\}",car);\
+   \
+\}\
+\
+\
+//fn display(x:Vec<i32>)\{\
+fn display(x:&Vec<i32>)\{\
+   println!("\{:?\}",x);\
+   \
+   \
+\}\
+\
+fn display2(_car:&mut String)\{\
+   println!("_car value is :\{\}",_car);\
+   _car.push_str(" F8 Tributo"); \
+   //Modify the actual string,name\
+\}    \
+\
+\
+/*\
+\
+Borrowing and References Exercise in Rust:\
+\
+Create a function called display2 which takes a string object as a parameter and pushes onto\
+the string an "F8 Tributo" which is an awesome type of Ferrari!\
+\
+Create variable car which is a string object with the default "Ferrari". Call display2 passing in the car\
+variable as the argument and print the modified version of the variable car.\
+\
+Good luck!\
+\
+*/}

@@ -1,0 +1,64 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2636
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \
+/*\
+\
+** Ownership in Rust **\
+\
+The Stack vs the Heap\
+\
+Recall ---\
+\
+stack:\
+_ i = 23\
+_ bool= true\
+_  \
+_\
+\
+heap:\
+---- --- struct - - --\
+ --- - --\
+\
+Variables of a value have an owner in Rust.\
+All the data this is stored in Rust has an owner associated to it. \
+\
+\
+let time = 20 - time is the owner of the value 20\
+\
+Data only has one owner at a time.\
+Multiple variables cannot point to the same memory location \
+Variables always point to different memory locations\
+\
+That being said, you can transfer ownership in Rust:\
+\
+Assigning one variable's value to another variable.\
+Inputting value to a function.\
+Outputting value from a function.\
+\
+A vector is a data structure that contains zero-or-more items of the same type. \
+The items have an order, and you can access the items by index (0, 1, ...). \
+You can add and remove items. The items themselves are stored in a contiguous heap-allocated area.\
+\
+*/\
+\
+fn main()\{\
+   let vector1 = vec![1,2,3]; \
+   // vector v owns the object in heap\
+\
+   //only a single variable owns the heap memory at any given time\
+   let vector2 = vector1; \
+   //two pointers to the same content is not allowed in rust\
+\
+   //Rust will check for memory access which is a key selling point for using the language\
+\
+   println!("\{:?\}",vector1);\
+\}\
+\
+\
+\
+}

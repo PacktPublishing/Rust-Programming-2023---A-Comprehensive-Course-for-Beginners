@@ -1,0 +1,61 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2636
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \
+/*\
+\
+** Ownership in Rust **\
+\
+The Stack vs the Heap\
+\
+stack:\
+_ i = 23\
+_ bool= true\
+_\
+_\
+\
+heap:\
+---- --- struct - - --\
+ --- - --\
+\
+Each method has its own stack designed for primitives (when the method is done you can clean the stack out)\
+\
+Pointer on the stack will point to an object\
+\
+Structs could be on the heap (not as efficient and fast and have to find space to allocate it)\
+\
+Rust does not use a garbage collector, \
+but rather achieves these properties through a sophisticated, \
+but complex, type system. Doing so makes Rust very efficient, but makes Rust relatively hard to learn and use.\
+\
+\
+**********\
+\
+The stack is very fast, and is where memory is allocated in Rust by default. \
+But the allocation is local to a function call, and is limited in size. \
+The heap, on the other hand, is slower, and is explicitly allocated by your program. \
+But it\'92s effectively unlimited in size, and is globally accessible. \
+Note this meaning of heap, which allocates arbitrary-sized blocks of memory in arbitrary order, \
+is quite different from the heap data structure.\
+\
+when a function gets called, some memory gets allocated for all of its local \
+variables and some other information. This is called a \'91stack frame\'92\
+\
+So if the stack is faster and easier to manage, why do we need the heap? \
+A big reason is that Stack-allocation alone means you only have 'Last In First Out (LIFO)' \
+semantics for reclaiming storage. Heap-allocation is strictly more general, \
+allowing storage to be taken from and returned to the pool in arbitrary order, but at a complexity cost.\
+\
+Generally, you should prefer stack allocation, and so, Rust stack-allocates by default. \
+The LIFO model of the stack is simpler, at a fundamental level. This has two big impacts:\
+runtime efficiency and semantic impact.\
+\
+\
+*/\
+\
+\
+}

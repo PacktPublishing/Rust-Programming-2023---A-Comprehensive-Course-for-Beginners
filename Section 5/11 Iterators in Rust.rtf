@@ -1,0 +1,74 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2636
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \
+/*\
+\
+Iterators in Rust\
+\
+Iterates traverse and iterate over a different collections of values from types such as arrays, vectors, maps, etc. \
+The Iterator trait is invoked from iterators defined in the Rust standard library. \
+The iter() method returns an iterator object of the collection of items.  \
+The next() method traverses through items and returns none once it reaches the end of items\
+\
+*/\
+\
+// iter example\
+\
+fn main() \{\
+   let x = [1,2,3];\
+   let iter = x.iter();\
+   for items in iter\{\
+      print!("\{\}\\t",items);\
+   \}\
+   \
+   // into_iter  moves values in the collection into an iter object via ownership \
+   \
+    let mut values = vec!["a", "b", "c"];\
+   // for value in values.into_iter() \{\
+      for value in values.iter_mut() \{\
+      match value \{\
+    //     "c" => println!("Moving these!"),\
+        &mut "b" => println!("bb"),\
+         _ => println!("iteration: \{\}", value),\
+      \}\
+   \}\
+   // cannot reuse the collection after iteration\
+   //println!("\{:?\}",values); \
+   //Error:Cannot access after ownership move\
+   \
+   \
+// for and iter_mut() This function is like the iter() function. However, this function can modify elements within the collection.\
+\
+\
+  let mut pets = vec!["cat", "dog", "goldfish"];\
+   for fav in pets.iter_mut() \{\
+      match fav \{\
+         &mut "dog" => println!("cute doggy!"),\
+         _ => println!("Hello \{\}", fav),\
+      \}\
+   \}\
+   println!("\{:?\}",pets);\
+   //// reusing the collection after iteration\
+   \
+\}\
+\
+\
+/*\
+\
+ \
+Write a vector called pets which contains the 3 string itens cat, dog and goldfish.\
+Use the for in inter_mut() signature to match dog so that the program prints \'93cute doggy!\'94\
+The default should print \'93hello!\'94 and each pet name for each iteration \
+\
+\
+*/\
+\
+\
+\
+ \
+ }

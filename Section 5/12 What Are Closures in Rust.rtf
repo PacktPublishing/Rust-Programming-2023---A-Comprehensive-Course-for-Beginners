@@ -1,0 +1,43 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2636
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \
+/*\
+\
+Closures in Rust\
+\
+Closures are functions within functions that are nameless\
+\
+We can assign closures to variables and then\
+pass a function as a parameter to other functions. \
+They are also known as in line functions\
+\
+\
+Closures: Anonymous Functions that Capture Their Environment\
+\
+Rust\'92s closures are anonymous functions you can save in a variable or pass as arguments to \
+other functions. You can create the closure in one place and then call the closure elsewhere \
+to evaluate it in a different context. Unlike functions, closures can capture values \
+from the scope in which they\'92re defined. We\'92ll demonstrate how these closure features allow for \
+code reuse and behavior customization.\
+\
+\
+\
+let closure_function = |parameter| \{\
+   //logic\
+\}\
+\
+*/\
+\
+fn main()\{\
+   let is_even = |num| \{\
+      num%2==0\
+   \};\
+   let num = 12;\
+   println!("\{\} is even ? \{\}",num,is_even(num));\
+\}\
+}

@@ -1,0 +1,47 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2636
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \
+/*\
+\
+Strings: String Literal\
+\
+String literals are a set of characters, which are hardcoded into a variable. \
+\
+let user="The Incredible Hulk". String literals are found in module std::str. \
+\
+String literals can also be called string slices.\
+\
+The String data type in Rust can be applied as such:\
+\
+String Literal (&str)\
+String Object (String)\
+\
+*/\
+\
+\
+// Example: \
+fn main() \{\
+   let bank:&str="Citi Bank";\
+   let crypto:&str = "Bitcoin";\
+   println!("Bank is: \{\}, Crypto: \{\}",bank,crypto);\
+   \
+   // String literal static example\
+   let bank2:&'static str="Sky";\
+   let crypto2:&'static str = "Ether";\
+   println!("Bank is: \{\}, Crypto: \{\}",bank2,crypto2);\
+   \
+\
+\}\
+\
+/*\
+\
+String literals are static by default. This ensures string literals are valid for the duration \
+of the program. You can explicitly declare them as static as well\
+\
+*/\
+}

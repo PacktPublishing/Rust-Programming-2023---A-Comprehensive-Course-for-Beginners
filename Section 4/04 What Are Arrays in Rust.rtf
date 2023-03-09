@@ -1,0 +1,66 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2636
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 /*\
+\
+** What Are Arrays in Rust **\
+\
+An array is a collection of objects of the same type T,\
+stored in contiguous memory. Arrays are created using brackets [], \
+and their length, which is known at compile time, is part of their type signature [T; length].\
+\
+Defining Arrays:\
+\
+An array consists of sequential memory blocks.\
+\
+Arrays are static. Arrays cannot be resized once initialized\
+\
+Each memory block represents an array element.\
+\
+Array elements are identified by the index\
+\
+Array element values can be updated or modified but cannot be deleted.\
+\
+*/\
+\
+// Array Example \
+\
+fn main()\{\
+   //let arr:[&str;4] = ["kramer","george","elaine","jerry"];\
+   let mut arr = ["kramer","george","elaine","jerry"];\
+   // arrays can also be mutable\
+   arr[2] ="elaine benis";\
+   println!("the seinfeld cast consists of \{:?\}",arr);\
+   println!("there are a total of \{\} main characters",arr.len());\
+   \
+   // the iter function fetches all the values in an array\
+    for val in arr.iter()\{\
+      println!("value is :\{\}",val);\
+   \}\
+   \
+   // exercise solution\
+   let mut arr_exercise:[i32;6] = [12,2,3,2,4,5];\
+      for i in 0..6 \{\
+      if arr_exercise[i] == 2 \{  \
+          arr_exercise[i] = 0;\
+      \}\
+      println!("index is: \{\} & value is : \{\}",i,arr_exercise[i]);\
+   \}\
+\}\
+\
+/*\
+Loop and mutate an array in Rust\
+\
+1. Create an array with the following integer values: 12,2,3,2,4,5\
+2. Write a for loop with can loop through the array and replace all the integer values of 2\
+with 0. Print the amended results tagged along with the index value of each integer\
+\
+Good luck and have fun!\
+\
+*/\
+\
+}

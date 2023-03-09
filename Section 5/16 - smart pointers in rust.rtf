@@ -1,0 +1,106 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2636
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 /*\
+\
+Smart Pointers in Rust\
+\
+A pointer is a general concept for a variable that contains an address in memory. \
+This address refers to, or \'93points at,\'94 some other data. \
+The most common kind of pointer in Rust is a reference, \
+References are indicated by the & symbol and borrow the value they point to. \
+They don\'92t have any special capabilities other than referring to data, and have no overhead.\
+\
+Smart pointers, on the other hand, are data structures that act like a pointer \
+but also have additional metadata and capabilities. \
+\
+The concept of smart pointers isn\'92t unique to Rust: smart pointers originated in C++ and exist in other languages as well. \
+Rust has a variety of smart pointers defined in the standard library that provide functionality \
+beyond that provided by references. \
+\
+Box\
+\
+Box is a smart pointer that allows you to store memory on the heap explicitly rather than the stack\
+and the stack contains the pointer to the heap data\
+\
+\
+Two Important Traits implemented by Smart Pointers\
+\
+1	Deref	\
+std::ops::Deref\
+\
+immutable dereferencing operations\
+\
+2	Drop	\
+std::ops::Drop\
+\
+when a value goes out of scope you can run some code also known as a destructor\
+\
+*/\
+\
+use std::ops::Deref;\
+\
+struct CustomSmartPointer<T>(T);\
+\
+impl<T>CustomSmartPointer<T> \{\
+    // generic structure with static method\
+    \
+    fn heap_allocation(value:T)->CustomSmartPointer<T> \{\
+        CustomSmartPointer(value)\
+    \}     \
+\}\
+\
+// implement deref trait\
+\
+impl<T> Deref for CustomSmartPointer <T> \{\
+    type Target = T; // in traits, type is used to declare an associated type\
+    fn deref(&self) -> &T \{\
+        &self.0 // syntax for taking the first argument which is 0\
+    \} \
+\}\
+\
+// implement drop trait\
+\
+impl<T> Drop for CustomSmartPointer <T> \{\
+    \
+    fn drop(&mut self) \{\
+        println!("dropping CustomSmartPointer object from memory");\
+    \}\
+\
+\}\
+\
+fn main() \{\
+\
+    let color = "green";\
+    let ref_color = CustomSmartPointer::heap_allocation(color);\
+    // call static method\
+    \
+    println!("green value is the same as color which is \{\}","green"==color);\
+    println!("green value is the same as color which is \{\}","green"==*ref_color);\
+     \
+    \
+    // ********************* what is box and dereferencing with the unary * operator\
+    \
+    let greeting = "hello";\
+    let greeting_heap = Box::new(greeting); // points to a new variable in the heap\
+    \
+    println!("\{\}","hello"==greeting);\
+    println!("\{\}","hello"==*greeting_heap); // accesses the value in the heap\
+    \
+\}\
+\
+/*\
+\
+Exercise - Customize your own Smart Pointer in Rust\
+\
+In Rust, you can achieve automatic memory deallocation using Drop trait.\
+\
+1. Implement the Drop trait for our Custom Pointer. It should include a function called specifically drop and print in the function \
+a completion run of the drop object from memory. \
+\
+*/\
+}

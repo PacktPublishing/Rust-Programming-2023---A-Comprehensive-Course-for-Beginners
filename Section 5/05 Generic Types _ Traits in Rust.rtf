@@ -1,0 +1,76 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2636
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \
+/*\
+\
+Generic Data Types in Rust\
+\
+We use generics to create definitions for items like function signatures or structs, \
+which we can then use with many different concrete data types. \
+\
+Let\'92s first look at how to define functions, structs, enums, and methods using generics. \
+Then we\'92ll discuss how generics affect code performance.\
+\
+The <T> syntax known as the type parameter, is used to declare a generic construct. T represents any data-type.\
+\
+*** Traits ***\
+\
+ trait defines functionality a particular type has and can share with other types. \
+ \
+ We can use traits to define shared behavior in an abstract way (ovverriding functions). \
+ We can use trait bounds to specify that a generic type can be any type that has certain behavior (concretely).\
+ \
+ Traits are often used to implement a standard set of actions (methods) across multiple structures. \
+ Traits act like interfaces in OOP.\
+\
+*/\
+\
+// Generic Struct with T\
+\
+struct GenericStruct<T> \{\
+    value:T,\
+\}\
+\
+fn main() \{\
+\
+    let t1:GenericStruct<i32> = GenericStruct\{value:100\};\
+    println!("the value is: \{\}", t1.value);\
+    \
+    let t2:GenericStruct<String> = GenericStruct\{value:"String Data Type".to_string()\};\
+    println!("the value is: \{\}", t2.value);\
+    \
+    // create an instance of the struct Game\
+    \
+    let g1 = Game \{\
+        power_level:100,\
+        weapon:"Sword of Fire"\
+    \};\
+\
+        g1.character_stats();\
+\}\
+\
+struct Game \{\
+    weapon:&'static str,\
+    power_level:u32\
+\}\
+\
+// declare a trait\
+\
+trait Stats \{\
+    fn character_stats(&self);\
+\}\
+\
+// implement a trait\
+impl Stats for Game \{\
+    fn character_stats(&self) \{\
+        println!("Printing stats of power level: \{\}, weapon: \{\}", self.power_level, \
+        self.weapon);\
+    \}\
+\}\
+\
+}
